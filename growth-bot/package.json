@@ -1,0 +1,14 @@
+{
+  "name": "celo-clicker-sdk-growth-bot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Install and smoke-check celo-clicker-sdk",
+  "type": "module",
+  "main": "index.js",
+  "dependencies": {
+    "celo-clicker-sdk": "latest"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
