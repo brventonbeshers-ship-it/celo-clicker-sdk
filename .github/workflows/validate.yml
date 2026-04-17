@@ -1,0 +1,37 @@
+name: Validate
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '15 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  verify:
+    name: Verify celo-clicker-sdk from npm
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Prepare clean environment
+        run: mkdir -p /tmp/celo-clicker-sdk-check
+
+      - name: Initialize project
+        working-directory: /tmp/celo-clicker-sdk-check
+        run: npm init -y
+
+      - name: Install celo-clicker-sdk from registry
+        working-directory: /tmp/celo-clicker-sdk-check
+        run: npm install celo-clicker-sdk
+
+      - name: Verify module loads
+        working-directory: /tmp/celo-clicker-sdk-check
+        run: node -e "const sdk = require('celo-clicker-sdk'); console.log('celo-clicker-sdk OK, exports:', Object.keys(sdk));"
+
+      - name: Show dependency tree
+        working-directory: /tmp/celo-clicker-sdk-check
+        run: npm ls --all
