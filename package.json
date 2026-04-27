@@ -1,6 +1,6 @@
 {
   "name": "celo-clicker-sdk",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "SDK for CeloClicker - tap-to-earn clicker game on Celo blockchain",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
